@@ -1,0 +1,31 @@
+:root {
+	/*		Colors		*/
+	--background: #F8EEEC;
+	--foreground: #02070A;
+	--red: #FC5030;
+	--yellow: #FEC800;
+	--blue: #557DEE;
+
+
+	--font-family: "Arial";
+	--font-size: 20px;
+
+
+	/*    Sizing    */
+	--sizing-small: 0.625rem;
+	--sizing-medium: 1.25rem;
+	--sizing-big: 3.75rem;
+	--sizing-huge: 6.25rem;
+
+
+	/*    Typography    */
+	--font-small-desktop: 1.25rem;
+	--font-medium-desktop: 1.563rem;
+	--font-big-desktop: 2.5rem;
+	--font-header-desktop: 3.75rem;
+
+	--font-small-mobile: 0.938rem;
+	--font-medium-mobile: 1.25rem;
+	--font-big-mobile: 1.563rem;
+	--font-header-mobile: 2.188rem;
+}
