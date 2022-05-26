@@ -9,7 +9,7 @@
           <p>{{ product.price }} Kr</p>
 
         </div>
-        <button class="body__button" @click="seeMore">See more</button>
+        <button class="body__button" @click="$emit('view-product', product)">View product</button>
       </div>
     </div>
   </div>
@@ -27,35 +27,34 @@
 
   export default {
     data() {
-      return {
-        loading: true,
-        result: null,
-      };
+        return {
+            loading: true,
+            result: null,
+
+            product: null,
+            active: false
+        };
     },
 
     async created() {
-      const query = `
+        const query = `
         *[_type == $type] | order(title asc) [0..5] {
           title,
           price,
           _id,
           cover {
-            asset->{path,url}
+            asset->{url}
           },
         }`;
-
-      const params = { type: "vinyls" };
-
-      this.result = await sanity.fetch(query, params);
-      this.loading = false;
+        const params = { type: "vinyls" };
+        this.result = await sanity.fetch(query, params);
+        this.loading = false;
     },
-
-  };
+};
 </script>
 
 <style>
   .body {
-    background: rgb(178, 235, 178);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -64,7 +63,7 @@
 
   .body__products {
     width: 20rem;
-    margin-bottom: var(--sizing-big);
+    margin-bottom: 7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

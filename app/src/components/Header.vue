@@ -15,7 +15,7 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		margin: var(--sizing-big) 0 var(--sizing-medium) 0;
+		margin: var(--sizing-medium) 0;
 		background: pink;
 	}
 
