@@ -1,8 +1,7 @@
 <template>
 	<header>
-		<p class="header__link">Menu</p>
 		<RouterLink to="/">
-			<h1 class="header__logo">STORE</h1>
+			<h1 class="header__logo">RETRO STORE</h1>
 		</RouterLink>
 		<RouterLink to="cart">
 			<p class="header__link">Cart</p>
@@ -15,8 +14,7 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		margin: var(--sizing-medium) 0;
-		background: pink;
+		margin: var(--sizing-big) 0;
 	}
 
 	header a {
@@ -27,7 +25,7 @@
 	.header__logo {
 		font-size: var(--font-header-mobile);
 		font-family: 'Wonder Pleasure';
-		color: red;
+		color: var(--dark-purple);
 	}
 
 	.header__link {
@@ -37,7 +35,6 @@
 	@media screen and (min-width: 968px) {
 		.header__logo {
 			font-size: var(--font-header-desktop);
-			color: blue;
 		}
 
 		.header__link {

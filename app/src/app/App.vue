@@ -9,6 +9,10 @@ export default {
   components: {
     Header,
   },
+
+  mounted() {
+    this.$store.commit('updateCartFromLocalStorage')
+  }
 };
 </script>
 

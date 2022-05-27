@@ -2,7 +2,8 @@
   <div>
     <ProductDescriptionDrawer 
       :product = "product" 
-      :active = "active.product_drawer" />
+      :active = "active.product_drawer" 
+      v-on:close-product-drawer = "closeProductDrawer()"/>
   </div>
 
   <div>
@@ -36,6 +37,10 @@ import ProductDescriptionDrawer from "../components/products/ProductDescriptionD
         this.product = product;
         this.active.product_drawer = true;
         console.log(this.product);
+      },
+
+      closeProductDrawer() {
+        this.active.product_drawer = false;
       }
     },
   };

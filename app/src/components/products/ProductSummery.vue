@@ -1,15 +1,17 @@
 <template>
-  <div class="body">
+  <div class="product-summery">
     <div v-if="loading">Waiting for sanity</div>
     <div v-else>
-      <div class="body__products" v-for="product in result" :key="product._id">
-        <img :src="product.cover.asset.url" alt="" />
+      <div class="product-summery__products" v-for="product in result" :key="product._id">
+        <div class="products__image-background">
+          <img :src="product.cover.asset.url" alt="" />
+        </div>
         <div class="products__text">
           <p>" {{ product.title }} "</p>
-          <p>{{ product.price }} Kr</p>
+          <p>$ {{ product.price.toFixed(2) }}</p>
 
         </div>
-        <button class="body__button" @click="$emit('view-product', product)">View product</button>
+        <button class="product-summery__button" @click="$emit('view-product', product)">View product</button>
       </div>
     </div>
   </div>
@@ -38,9 +40,10 @@
 
     async created() {
         const query = `
-        *[_type == $type] | order(title asc) [0..5] {
+        *[_type == $type] | order(title asc) {
           title,
           price,
+          description,
           _id,
           cover {
             asset->{url}
@@ -54,43 +57,57 @@
 </script>
 
 <style>
-  .body {
+  .product-summery {
     display: flex;
     flex-direction: row;
     justify-content: center;
     font-size: var(--font-medium-mobile);
   }
 
-  .body__products {
-    width: 20rem;
+  .product-summery__products {
     margin-bottom: 7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
+  .products__image-background {
+    width: 22rem;
+    height: 21rem;
+    background: var(--light-purple);
+  }
+
+  .products__image-background img {
+    max-width: 20rem;
+    width: 100%;
+  }
+
   .products__text {
      margin: var(--sizing-medium);
   }
 
-  .body__button {
+  .product-summery__button {
      height: 3.5rem;
-     border: 0.3rem solid black;
+     border: 0.4rem solid var(--dark-green);
+     background: var(--light-green);
      border-radius: 1.5rem;
+     color: black;
   }
 
   @media screen and (min-width: 968px) {
-   .body {
+    .product-summery {
       font-size: var(--font-medium-desktop);
-   }
+    }
 
-   .body__products {
-      width: 30rem;
-   }
+    .products__image-background {
+      width: 32rem;
+      height: 31rem;
+      background: var(--light-purple);
+    }
 
-   .body__button {
-     height: 4rem;
-     border: 0.4rem solid black;
-   }
+    .products__image-background img {
+      max-width: 30rem;
+      width: 100%;
+    }
   }
 </style>

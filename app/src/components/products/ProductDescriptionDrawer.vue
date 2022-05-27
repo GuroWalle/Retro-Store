@@ -1,22 +1,23 @@
 <template>
-   <div class="drawer__background" :class="{show: active}" @click="$emit('close-product-drawer')">
-      <div class="drawer" :class="{show: active}">
-         <button class="drawer--close" @click="$emit('close-product-drawer')">
+   <div class="product-description" :class="{show: active}" @click="$emit('close-product-drawer')">
+      <div class="product-description__drawer" :class="{show: active}">
+         <button class="drawer-close" @click="$emit('close-product-drawer')">
             X
          </button>
          <div v-if="product" class="product__details">
-            <h3 class="drawer__product--title">title: "{{product.title}}"</h3>
-            <p class="drawer__product--description">description: {{product.description}}</p>
-            <h3 class="drawer__product--price">price: {{product.price}} kr</h3>
+            <h3 class="drawer__product-title">"{{product.title}}"</h3>
+            <img :src="product.cover.asset.url" alt="" />
+            <p class="drawer__product-description">{{product.description}}</p>
+            <h3 class="drawer__product-price">Price: $ {{product.price}}</h3>
 
             <div v-if="productTotal" class="drawer__total-cost">
-               <h3>In cart</h3>
-               <h4>{{productTotal}} kr</h4>
+               <h3>Products in cart</h3>
+               <h4>{{productTotal}} </h4>
             </div>
 
-            <div class="button--container">
-               <button class="button-remove">Remove</button>
-               <button class="button-add">Add</button>
+            <div class="button-container">
+               <button class="button-remove" @click="removeFromCart">Remove</button>
+               <button class="button-add" @click="addToCart">Add</button>
             </div>
          </div>
       </div>
@@ -27,9 +28,20 @@
 <script>
    export default {
       props: ['product', 'active'],
+
+      methods: {
+         addToCart() {
+            this.$store.commit('addToCart', this.product)
+         },
+
+         removeFromCart() {
+            this.$store.commit('removeFromCart', this.product)
+         }
+      },
+
       computed: {
          productTotal() {
-            return 400
+            return this.$store.getters.productQuantity(this.product)
          }
       }
    }
@@ -37,7 +49,7 @@
 
 
 <style>
-   .drawer__background {
+   .product-description {
       width: 100%;
       height: 100vh;
       position: fixed;
@@ -53,8 +65,8 @@
       display: block;
    }
 
-   .drawer {
-      width: 95vw;
+   .product-description__drawer {
+      width: 100vw;
       height: 100vh;
       background: white;
       position: fixed;
@@ -89,6 +101,7 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
+      width: 30rem;
    }
 
    .drawer__product--description {
