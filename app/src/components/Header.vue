@@ -4,7 +4,7 @@
 			<h1 class="header__logo">RETRO STORE</h1>
 		</RouterLink>
 		<RouterLink to="cart">
-			<p class="header__link">Cart</p>
+			<img src="/images/shopping_cart.svg" alt="">
 		</RouterLink>
 	</header>
 </template>
@@ -28,17 +28,9 @@
 		color: var(--dark-purple);
 	}
 
-	.header__link {
-		font-size: var(--font-small-mobile);
-	}
-
 	@media screen and (min-width: 968px) {
 		.header__logo {
 			font-size: var(--font-header-desktop);
-		}
-
-		.header__link {
-			font-size: var(--font-medium-desktop);
 		}
 	}
 </style>

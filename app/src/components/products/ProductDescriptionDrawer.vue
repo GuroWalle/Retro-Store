@@ -1,21 +1,21 @@
 <template>
    <div class="product-description" :class="{show: active}" @click="$emit('close-product-drawer')">
-      <div class="product-description__drawer" :class="{show: active}">
+      <div class="product-description__drawer" :class="{showa: active}">
          <button class="drawer-close" @click="$emit('close-product-drawer')">
             X
          </button>
-         <div v-if="product" class="product__details">
-            <h3 class="drawer__product-title">"{{product.title}}"</h3>
+         <div v-if="product" class="product-description__details">
             <img :src="product.cover.asset.url" alt="" />
-            <p class="drawer__product-description">{{product.description}}</p>
-            <h3 class="drawer__product-price">Price: $ {{product.price}}</h3>
+            <h3 class="details__title">" {{product.title}} "</h3>
+            <p class="details__description">{{product.description}}</p>
+            <h3 class="details__price">$ {{product.price.toFixed(2)}}</h3>
 
-            <div v-if="productTotal" class="drawer__total-cost">
+            <div v-if="productTotal" class="details__total-cost">
                <h3>Products in cart</h3>
                <h4>{{productTotal}} </h4>
             </div>
 
-            <div class="button-container">
+            <div class="details__button-container">
                <button class="button-remove" @click="removeFromCart">Remove</button>
                <button class="button-add" @click="addToCart">Add</button>
             </div>
@@ -49,6 +49,76 @@
 
 
 <style>
+
+   .product-description {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background: pink;
+      z-index: 100;
+      display: none;
+   }
+
+   .product-description__drawer {
+       width: 100vw;
+      height: 100vh;
+      background: white;
+      position: fixed;
+      top: 0;
+      left: -105vw;
+      padding: 5rem;
+      transition: left 0.5s;
+      z-index: 101;
+      overflow-y: scroll;
+   }
+
+   .show {
+      display: block;
+   }
+
+   .showa {
+      left: 0;
+   }
+
+   .drawer-close {
+      font-size: var(--font-header-mobile);
+      color: black;
+   }
+
+   .product-description__details {
+      width: 20rem;
+   }
+
+   .details__title {
+      font-size: var(--font-big-mobile);
+   }
+
+   .details__description {
+      font-size: var(--font-small-mobile);
+   }
+
+   .details__price {
+      font-size: var(--font-medium-mobile);
+   }
+
+   .details__total-cost {
+      font-size: var(--font-medium-mobile);
+   }
+
+   .details__button-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      font-size: var(--font-medium-mobile);
+   }
+
+   .details__button-container button {
+      color: black;
+   }
+
+   /*
    .product-description {
       width: 100%;
       height: 100vh;
@@ -114,5 +184,6 @@
       border-radius: 15px;
       margin: 0 5px 50px 5px;
    }
+   */
 
 </style>
