@@ -10,6 +10,7 @@ footer {
    width: 100%;
    height: 20rem;
    padding: 3rem 2rem;
+   margin-top: 15rem;
    background: var(--light-purple);
    font-family: 'Wonder Pleasure';
    font-size: var(--font-header-mobile);
