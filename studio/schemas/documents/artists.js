@@ -10,15 +10,11 @@ export default {
          validation: Rule => Rule.required(),
       },
       {
-         title: 'Image',
-         name: 'image',
-         type: 'image',
-      },
-      {
          title: 'Vinyls',
          name: 'vinyls',
          type: 'reference',
          to: [{ type: 'vinyls' }],
+         validation: Rule => Rule.required(),
       },
    ]
 }
