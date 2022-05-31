@@ -3,7 +3,7 @@
       <div class="card__header">
          <h3>" {{product.title}} "</h3>
          <h4>In cart {{product.quantity}}</h4>
-         <h4>Total cost {{item_cost.toFixed(2)}}</h4>
+         <h4>Total cost {{itemCost.toFixed(2)}}</h4>
       </div>
    </div>
 </template>
@@ -12,7 +12,7 @@
 export default {
    props: ['product'],
    computed: {
-      item_cost() {
+      itemCost() {
          return this.product.price * this.product.quantity
       }
    }
