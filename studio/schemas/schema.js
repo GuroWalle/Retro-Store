@@ -3,7 +3,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import artists from './documents/artists.js'
 import genres from './documents/genres.js'
-import staff from './documents/staff.js'
 import vinyls from './documents/vinyls.js'
 
 export default createSchema({
@@ -13,6 +12,5 @@ export default createSchema({
     vinyls,
     artists,
     genres,
-    staff
   ]),
 })
