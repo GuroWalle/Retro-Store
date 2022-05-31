@@ -1,15 +1,9 @@
 :root {
 	/*		Colors		*/
 	--background: #F8EEEC;
-	--foreground: #02070A;
-	--red: #FC5030;
-	--yellow: #FEC800;
-	--blue: #557DEE;
 
 	--dark-green: #7EBE82;
 	--light-green: #95CE99;
-	--dark-yellow: #FFD64E;
-	--light-yellow: #FFE694;
 	--dark-pink: #F08F8F;
 	--light-pink: #F6B6B6;
 	--dark-purple: #583F9C;
@@ -19,16 +13,13 @@
 	--dark-orange: #FF9172;
 	--light-orange: #FCBFAD;
 
-
 	--font-family: "Arial";
-	--font-size: 20px;
 
 
 	/*    Sizing    */
 	--sizing-small: 0.625rem;
 	--sizing-medium: 1.25rem;
 	--sizing-big: 2rem;
-	--sizing-bigger: 3.75rem;
 	--sizing-huge: 6.25rem;
 
 
