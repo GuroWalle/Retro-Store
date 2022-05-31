@@ -65,10 +65,10 @@ export default {
 }
 
 .product-summery__products {
-  margin-bottom: 7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: var(--sizing-huge);
 }
 
 .products__image-background {

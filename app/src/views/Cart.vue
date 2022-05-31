@@ -1,5 +1,7 @@
 <template>
-  <h1>Your Cart</h1>
+  <div class="cart">
+    <h1>Your Cart</h1>
+  </div>
 
   <CartItemCard 
     v-for="product in products"
@@ -29,3 +31,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.cart h1 {
+  text-align: center;
+}
+</style>

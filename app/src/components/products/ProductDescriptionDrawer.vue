@@ -6,19 +6,20 @@
       </button>
       <div v-if="product" class="product-description__details">
          <img :src="product.cover.asset.url" alt="" />
-         <h3 class="details__title">" {{product.title}} "</h3>
-         <p class="details__description">{{product.description}}</p>
-         <h3 class="details__price">$ {{product.price.toFixed(2)}}</h3>
+         <div class="details__container">
+            <h3 class="details__title">" {{product.title}} "</h3>
+            <p class="details__description">{{product.description}}</p>
+            <h3 class="details__price">$ {{product.price.toFixed(2)}}</h3>
+            
+            <div v-if="productTotal" class="details__total-cost">
+               <h3>Products in cart:</h3>
+               <h4>{{productTotal}} </h4>
+            </div>
 
-         <!--  If there are products in the cart show this div   -->
-         <div v-if="productTotal" class="details__total-cost">
-            <h3>Products in cart</h3>
-            <h4>{{productTotal}} </h4>
-         </div>
-
-         <div class="details__button-container">
-            <button class="button-remove" @click="removeFromCart">Remove</button>
-            <button class="button-add" @click="addToCart">Add</button>
+            <div class="details__button-container">
+               <button class="button-remove" @click="removeFromCart">Remove</button>
+               <button class="button-add" @click="addToCart">Add</button>
+            </div>
          </div>
       </div>
    </div>
@@ -46,15 +47,16 @@ export default {
 
 <style>
 .product-description__drawer {
-   width: 100vw;
-   height: 100vh;
-   background: white;
    position: fixed;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
    top: 0;
    left: -105vw;
-   padding: 5rem;
+   width: 100vw;
+   height: 100vh;
+   background: var(--background);
    transition: left 0.5s;
-   z-index: 101;
    overflow-y: scroll;
 }
 
@@ -63,106 +65,100 @@ export default {
 }
 
 .drawer-close {
+   margin: var(--sizing-small) 0;
    font-size: var(--font-header-mobile);
    color: black;
 }
 
 .product-description__details {
-   width: 20rem;
+   width: 19rem;
 }
 
+
 .details__title {
+   margin: var(--sizing-small) 0 0 0;
    font-size: var(--font-big-mobile);
 }
 
 .details__description {
+   margin: 0 0 var(--sizing-small) 0;
    font-size: var(--font-small-mobile);
 }
 
 .details__price {
+   margin: var(--sizing-medium) 0;
    font-size: var(--font-medium-mobile);
 }
 
 .details__total-cost {
-   font-size: var(--font-medium-mobile);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: var(--font-small-mobile);
 }
 
 .details__button-container {
    display: flex;
    flex-direction: row;
-   justify-content: space-around;
+   justify-content: space-between;
    font-size: var(--font-medium-mobile);
 }
 
 .details__button-container button {
    color: black;
+   width: 8.5rem;
+   padding: 0.5rem;
+   border: 0.4rem solid var(--dark-orange);
+   border-radius: 1.5rem;
+   background: var(--light-orange);
 }
 
-/*
-.product-description {
-   width: 100%;
-   height: 100vh;
-   position: fixed;
-   left: 0;
-   top: 0;
-   background: rgba(0, 0, 0, 0.400);
-   z-index: 100;
-   display: none;
-   transition: 0.5s;
-}
+@media screen and (min-width: 968px) {
+   .drawer-close {
+      margin: var(--sizing-medium) 0;
+      font-size: var(--font-header-desktop);
+   }
 
-.show {
-   display: block;
-}
+   .product-description__details {
+      height: 32rem;
+      width: 80rem;
+      display: flex;
+      flex-direction: row;
+   }
 
-.product-description__drawer {
-   width: 100vw;
-   height: 100vh;
-   background: white;
-   position: fixed;
-   top: 0;
-   left: -105vw;
-   padding: 5rem;
-   transition: left 0.5s;
-   z-index: 101;
-   overflow-y: scroll;
-}
+   .details__container {
+      display: flex;
+      flex-direction: column;
+      padding: 5rem;
+   }
 
-.show {
-   left: 0;
-}
+   .details__title {
+      margin: var(--sizing-small) 0;
+      font-size: var(--font-big-desktop);
+   }
 
-.drawer__close {
-   font-size: var(--font-medium-mobile);
-   padding: 2rem;
-   border-radius: 5px;
-   right: 10px;
-   border: 2px solid red;
-   color: yellow;
-   width: 15px;
-   float: right;
-}
+   .details__description {
+      margin: 0 0 var(--sizing-small) 0;
+      font-size: var(--font-small-desktop);
+   }
 
-.drawer__close:hover {
-   background: lightblue;
-}
+   .details__price {
+      margin: var(--sizing-medium) 0;
+      font-size: var(--font-medium-desktop);
+   }
 
-.product__details {
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   width: 30rem;
-}
+   .details__total-cost {
+      margin: var(--sizing-medium) 0;
+      font-size: var(--font-small-desktop);
+   }
 
-.drawer__product--description {
-   padding: 1rem;
-}
+   .details__button-container {
+      margin: var(--sizing-big) 0;
+      font-size: var(--font-medium-desktop);
+   }
 
-.button--container button {
-   width: 10rem;
-   padding: 10px;
-   border-radius: 15px;
-   margin: 0 5px 50px 5px;
+   .details__button-container button {
+      width: 15rem;
+   }
 }
-*/
 </style>

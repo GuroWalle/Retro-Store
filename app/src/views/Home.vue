@@ -1,5 +1,4 @@
 <!-- Gotten help from:  https://www.youtube.com/watch?v=oWt4jYThJCo&list=PLgiAmmJALlgzvpogJwhFytLmh6tI-TQSN&index=12  -->
-
 <template>
   <div>
     <!--  (is active when loading) when 'view more' button is clicked the ProductDescriptionDrawer component opens/ active = true  -->
